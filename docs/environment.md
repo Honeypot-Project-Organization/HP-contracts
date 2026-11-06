@@ -17,7 +17,7 @@
 The API refuses to start when a required value is missing, a secret is short or a placeholder, or the two
 secrets are equal.
 
-## Honeypot shipper (`assets/cowrie-vps/.env`)
+## Honeypot shipper (`backend/cowrie-vps/.env`)
 
 | Variable | Required | Default | Notes |
 |---|---|---|---|
@@ -36,11 +36,11 @@ secrets are equal.
 
 | What | Where it lives | Must equal |
 |---|---|---|
-| Ingest key | backend `INGEST_API_KEY` | assets shipper `INGEST_API_KEY` |
-| Ingest endpoint | assets shipper `INGEST_URL` | backend `POST /ingest` on its public HTTPS URL |
+| Ingest key | backend `INGEST_API_KEY` | backend shipper (`cowrie-vps`) `INGEST_API_KEY` |
+| Ingest endpoint | backend shipper (`cowrie-vps`) `INGEST_URL` | backend `POST /ingest` on its public HTTPS URL |
 | Dashboard origin | backend `CORS_ALLOWED_ORIGIN` | the URL where the frontend is hosted (for example `https://<project>.web.app`) |
 | API URL (twice in the frontend) | frontend `VITE_API_BASE_URL` **and** `firebase.json` CSP `connect-src` | the backend's public URL |
-| Event fields | Cowrie version pinned in `assets/cowrie-vps/cowrie/Dockerfile` | what `schemas/ingest/cowrie-event.schema.json` and backend `CowrieEvent` accept |
+| Event fields | Cowrie version pinned in `backend/cowrie-vps/cowrie/Dockerfile` | what `schemas/ingest/cowrie-event.schema.json` and backend `CowrieEvent` accept |
 | Response shapes | backend routers | `schemas/api/*` and the frontend `src/lib/normalize.js` |
 | Location attribution | frontend footer link to `https://db-ip.com` | required by DB-IP's licence while DB-IP data is used |
 

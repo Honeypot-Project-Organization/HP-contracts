@@ -5,12 +5,12 @@ the shared reference that the other repos are checked against.
 
 | Repo | What it is |
 |---|---|
-| `backend` | FastAPI API: ingest, login, dashboard routes, IP geolocation |
+| `backend` | FastAPI API (`fastapi-backend/`: ingest, login, dashboard, MITRE) and the Cowrie honeypot, log shipper, firewall and VPS setup guide (`cowrie-vps/`) |
 | `frontend` | React dashboard (Firebase Hosting) |
-| `assets` | Honeypot deployment: Cowrie image, log shipper, firewall, bait files, dev compose, setup guide, security notes |
+| `assets` | Project documentation: sprint reports and videos, static code analysis, branch protection, design and requirements |
 | `contracts` | **this repo** |
 
-Suggested layout on your machine (the dev compose file in `assets` expects `../backend`):
+Suggested layout on your machine:
 ```
 honeypot/
   backend/  frontend/  assets/  contracts/
@@ -54,5 +54,5 @@ PY
 ## Changing a contract
 1. Edit the schema/doc and add or update a fixture (and `manifest.json`).
 2. Run `python scripts/validate.py`.
-3. Change the backend, then the frontend (`src/lib/normalize.js`) and anything in `assets` that depends on it.
+3. Change the backend, then the frontend (`src/lib/normalize.js`) and the log shipper in `backend/cowrie-vps/` if it depends on it.
 4. Add a line to `CHANGELOG.md`.
