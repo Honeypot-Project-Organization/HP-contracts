@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "health.schema.json",
+  "title": "Health",
+  "description": "200 {status:'ok'} or 503 {status:'degraded', database:'unreachable'}.",
+  "type": "object",
+  "required": [
+    "status"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "ok",
+        "degraded"
+      ]
+    },
+    "database": {
+      "const": "unreachable"
+    }
+  }
+}

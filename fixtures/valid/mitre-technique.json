@@ -1,0 +1,24 @@
+{
+  "id": "T1082",
+  "name": "System Information Discovery",
+  "tactics": [
+    "Discovery"
+  ],
+  "basis": "command",
+  "occurrences": 40,
+  "ips": 9,
+  "last_seen": "2026-10-13T10:00:05Z",
+  "url": "https://attack.mitre.org/techniques/T1082/",
+  "known": true,
+  "sessions": 12,
+  "commands": 40,
+  "first_seen": "2026-09-01T00:00:00Z",
+  "rules": [
+    {
+      "name": "sysinfo-commands",
+      "pattern": "^(?:uname|lscpu)(?:\\s|$)",
+      "scope": "segment",
+      "description": null
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "accepted": 1,
+  "duplicates": 1,
+  "rejected": [
+    {
+      "index": 2,
+      "error": "src_ip: Value error, ..."
+    }
+  ]
+}

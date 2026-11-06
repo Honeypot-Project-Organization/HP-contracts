@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stats.schema.json",
+  "title": "Stats",
+  "description": "GET /api/stats",
+  "type": "object",
+  "required": [
+    "total_sessions",
+    "total_commands",
+    "total_auth_attempts",
+    "successful_logins",
+    "success_rate_percent",
+    "unique_ips",
+    "last_event_received_at"
+  ],
+  "properties": {
+    "total_sessions": {
+      "type": "integer"
+    },
+    "total_commands": {
+      "type": "integer"
+    },
+    "total_auth_attempts": {
+      "type": "integer"
+    },
+    "successful_logins": {
+      "type": "integer"
+    },
+    "success_rate_percent": {
+      "type": "number"
+    },
+    "unique_ips": {
+      "type": "integer"
+    },
+    "last_event_received_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+    }
+  }
+}

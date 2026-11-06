@@ -1,0 +1,13 @@
+{
+  "key": "3f1c2a9d7b0e44a8c5d61e02",
+  "text": "uname -a",
+  "count": 12,
+  "ip_count": 4,
+  "session_count": 9,
+  "first_ts": "2026-09-01T00:00:00Z",
+  "last_ts": "2026-10-13T10:00:05Z",
+  "techniques": [
+    "T1082",
+    "T1110.001"
+  ]
+}

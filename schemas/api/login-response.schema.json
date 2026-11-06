@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "login-response.schema.json",
+  "title": "LoginResponse",
+  "type": "object",
+  "required": [
+    "access_token",
+    "token_type"
+  ],
+  "properties": {
+    "access_token": {
+      "type": "string"
+    },
+    "token_type": {
+      "const": "bearer"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "ip": "203.0.113.9",
+    "first_seen": "2026-10-13T10:00:00Z",
+    "last_seen": "2026-10-13T10:00:30Z",
+    "total_sessions": 1,
+    "total_commands": 2,
+    "total_auth_attempts": 2,
+    "successful_logins": 1,
+    "threat_score": 0.0,
+    "updated_at": "2026-10-13T10:00:30Z",
+    "geo": {
+      "found": true,
+      "looked_up_at": "2026-10-15T12:00:00Z",
+      "source": "dbip",
+      "country_code": "DE",
+      "country": "Germany",
+      "continent_code": "EU",
+      "region": "Hesse",
+      "city": "Frankfurt am Main",
+      "latitude": 50.11,
+      "longitude": 8.68,
+      "accuracy_radius_km": null,
+      "precision": "city",
+      "asn": 14061,
+      "network": "DIGITALOCEAN-ASN"
+    }
+  },
+  {
+    "ip": "203.0.113.9",
+    "first_seen": "2026-10-13T10:00:00Z",
+    "last_seen": "2026-10-13T10:00:30Z",
+    "total_sessions": 1,
+    "total_commands": 2,
+    "total_auth_attempts": 2,
+    "successful_logins": 1,
+    "threat_score": 0.0,
+    "updated_at": "2026-10-13T10:00:30Z"
+  }
+]

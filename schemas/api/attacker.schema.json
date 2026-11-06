@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "attacker.schema.json",
+  "title": "Attacker",
+  "description": "An attacker IP (ip_intel document, `_id` renamed to `ip`). `geo` is absent until a location has been looked up.",
+  "$defs": {
+    "geo": {
+      "type": "object",
+      "required": [
+        "found"
+      ],
+      "additionalProperties": true,
+      "description": "Location saved on an attacker by the API. When found=false only found, looked_up_at and source are present. Accuracy depends on the database (DB-IP Lite has no accuracy radius). Treat every field as optional.",
+      "properties": {
+        "found": {
+          "type": "boolean"
+        },
+        "looked_up_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+        },
+        "source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country_code": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2
+        },
+        "country": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "continent_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "region": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": -180,
+          "maximum": 180
+        },
+        "accuracy_radius_km": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "precision": {
+          "enum": [
+            "city",
+            "region",
+            "country",
+            null
+          ]
+        },
+        "asn": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "network": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "type": "object",
+  "required": [
+    "ip"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "ip": {
+      "type": "string"
+    },
+    "first_seen": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+    },
+    "last_seen": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+    },
+    "total_sessions": {
+      "type": "integer"
+    },
+    "total_commands": {
+      "type": "integer"
+    },
+    "total_auth_attempts": {
+      "type": "integer"
+    },
+    "successful_logins": {
+      "type": "integer"
+    },
+    "threat_score": {
+      "type": "number"
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+    },
+    "geo": {
+      "$ref": "#/$defs/geo"
+    },
+    "techniques": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+        "description": "ATT&CK technique id, e.g. T1082 or T1110.001. Heuristic tag, not a confirmed technique."
+      },
+      "description": "MITRE ATT&CK technique ids matched by the rule set in app/mitre.py (heuristic). Absent on rows stored before the MITRE backfill ran."
+    }
+  }
+}

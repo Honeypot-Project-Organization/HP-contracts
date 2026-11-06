@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "client-ip-debug.schema.json",
+  "title": "ClientIpDebug",
+  "description": "GET /api/debug/client-ip",
+  "type": "object",
+  "required": [
+    "tcp_peer",
+    "x_forwarded_for",
+    "trusted_proxy_hops",
+    "rate_limit_key"
+  ],
+  "properties": {
+    "tcp_peer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "x_forwarded_for": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trusted_proxy_hops": {
+      "type": "integer"
+    },
+    "rate_limit_key": {
+      "type": "string"
+    }
+  }
+}

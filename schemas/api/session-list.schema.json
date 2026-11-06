@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session-list.schema.json",
+  "title": "SessionList",
+  "description": "GET /api/sessions and GET /api/ips/{ip}/sessions (limit 1-500, skip 0-100000), newest first.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id"
+    ],
+    "additionalProperties": true,
+    "description": "A session. Returned straight from MongoDB: `_id` is renamed to `id`; fields not yet known for an open session may be absent.",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "src_ip": {
+        "type": "string"
+      },
+      "src_port": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "dst_port": {
+        "type": [
+          "integer",
+          "null"
+        ]
+      },
+      "protocol": {
+        "enum": [
+          "ssh",
+          "telnet"
+        ]
+      },
+      "start_time": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+      },
+      "end_time": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+      },
+      "duration_seconds": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "login_success": {
+        "type": "boolean"
+      },
+      "username": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "password": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "command_count": {
+        "type": "integer"
+      },
+      "download_count": {
+        "type": "integer"
+      },
+      "client_version": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "status": {
+        "enum": [
+          "open",
+          "closed"
+        ]
+      }
+    }
+  }
+}

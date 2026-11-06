@@ -1,0 +1,19 @@
+{
+  "countries": [
+    {
+      "code": "DE",
+      "name": "Germany",
+      "ips": 412,
+      "sessions": 3120
+    },
+    {
+      "code": "US",
+      "name": "United States",
+      "ips": 980,
+      "sessions": 2875
+    }
+  ],
+  "located": 1390,
+  "total": 1500,
+  "pending": 110
+}

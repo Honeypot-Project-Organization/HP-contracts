@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "batch-response.schema.json",
+  "title": "IngestBatchResponse",
+  "description": "202 body of POST /ingest/batch. Malformed events are skipped and reported in `rejected`; they do not fail the batch.",
+  "type": "object",
+  "required": [
+    "accepted",
+    "duplicates",
+    "rejected"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "accepted": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duplicates": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rejected": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "index",
+          "error"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "event-response.schema.json",
+  "title": "IngestEventResponse",
+  "description": "202 body of POST /ingest.",
+  "type": "object",
+  "required": [
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "ok",
+        "duplicate",
+        "stored_raw_only"
+      ]
+    }
+  }
+}

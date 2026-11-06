@@ -1,0 +1,12 @@
+{
+  "id": "T12",
+  "name": "System Information Discovery",
+  "tactics": [
+    "Discovery"
+  ],
+  "basis": "command",
+  "occurrences": 40,
+  "ips": 9,
+  "last_seen": "2026-10-13T10:00:05Z",
+  "rules": []
+}
