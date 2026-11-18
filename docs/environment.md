@@ -4,8 +4,8 @@
 
 | Variable | Required | Default | Notes |
 |---|---|---|---|
-| `MONGO_URI` | yes | none | Atlas string; user needs `readWrite` on `honeypot` only |
-| `DB_NAME` | no | `honeypot` | |
+| `MONGO_URI` | yes | none | Atlas string. The user has a custom role (not `readWrite`) limited to the collections the API needs; see backend `docs/database-security.md` |
+| `DB_NAME` | no | `honeypot` | `honeypot-project` in production |
 | `INGEST_API_KEY` | yes | none | >= 32 chars, not a placeholder; **must differ** from `JWT_SECRET_KEY` |
 | `JWT_SECRET_KEY` | yes | none | >= 32 chars, not a placeholder |
 | `JWT_EXPIRE_MINUTES` | no | `60` | |
