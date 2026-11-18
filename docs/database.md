@@ -1,7 +1,8 @@
-# MongoDB contract (database `honeypot`, Atlas M0)
+# MongoDB contract (database `DB_NAME`: `honeypot-project` in production, Atlas M0)
 
 Owned by the backend repo (`app/database.py`, `app/routers/ingest.py`, `app/geo.py`, `app/models/`).
 Other repos must not write to these collections. Indexes are created at API start (`create_indexes`).
+Who can read and write each collection: see backend `docs/database-security.md`.
 
 | Collection | `_id` | Fields (besides `_id`) | Indexes | Lifetime |
 |---|---|---|---|---|
@@ -14,6 +15,7 @@ Other repos must not write to these collections. Indexes are created at API star
 | `admins` | ObjectId | `username` (unique), `password_hash` (bcrypt), `created_at` | `username` unique | one document, created only by `scripts/create_admin.py` |
 | `geoip_meta` | `"city"` or `"asn"` | `version`, `chunks`, `size`, `sha256`, `uploaded_at`, `source` | none | replaced on each upload |
 | `geoip_chunks` | `"<kind>:<version>:<n>"` | `kind`, `version`, `n`, `data` (binary, <=4 MB) | none | old versions deleted after an upload |
+| `app_meta` | `"mitre"` | `version` (the MITRE `RULES_VERSION` the backfill last ran for) | none | kept; one document |
 
 Notes
 - MITRE ATT&CK tags: `sessions.techniques`, `ip_intel.techniques` and `commands.techniques` (+ `commands.rules_version`)
