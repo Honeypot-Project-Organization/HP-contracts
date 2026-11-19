@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "command-list.schema.json",
+  "title": "CommandList",
+  "description": "GET /api/commands, /api/sessions/{id}/commands (oldest first) and /api/ips/{ip}/commands (newest first).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "session_id": {
+        "type": "string"
+      },
+      "src_ip": {
+        "type": "string"
+      },
+      "timestamp": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "ISO 8601 timestamp. Normally UTC with offset (Z or +00:00). Rows stored before scripts/migrate_timestamps.py was run may lack an offset; treat those as UTC."
+      },
+      "input": {
+        "type": "string",
+        "description": "Attacker-typed text. Render as text only."
+      },
+      "cmd_key": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$",
+        "description": "Present once the command has been grouped (new rows immediately; older rows after scripts/backfill.py or API start-up). Links to /api/commands/groups/{key}."
+      },
+      "techniques": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+          "description": "ATT&CK technique id, e.g. T1082 or T1110.001. Heuristic tag, not a confirmed technique."
+        },
+        "description": "MITRE ATT&CK technique ids matched by the rule set in app/mitre.py (heuristic). Absent on rows stored before the MITRE backfill ran."
+      }
+    }
+  }
+}

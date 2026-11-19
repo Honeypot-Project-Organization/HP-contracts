@@ -1,0 +1,10 @@
+{
+  "eventid": "cowrie.session.file_download",
+  "session": "abc123def456",
+  "src_ip": "203.0.113.9",
+  "url": "http://example.invalid/x.sh",
+  "outfile": "x.sh",
+  "shasum": "0000000000000000000000000000000000000000000000000000000000000000",
+  "size": 4096,
+  "timestamp": "2026-10-13T10:00:00Z"
+}

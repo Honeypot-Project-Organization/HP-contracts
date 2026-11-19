@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "geo-points.schema.json",
+  "title": "GeoPoints",
+  "description": "GET /api/geo/points: map dots for ALL located IPs, grouped into 0.5-degree cells (at most 2000 dots, busiest first).",
+  "type": "object",
+  "required": [
+    "dots",
+    "located",
+    "unplaced",
+    "total",
+    "pending"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "dots": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "latitude",
+          "longitude",
+          "count",
+          "sessions",
+          "ips"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "IPs in this cell."
+          },
+          "sessions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "ips": {
+            "type": "array",
+            "maxItems": 20,
+            "items": {
+              "type": "string"
+            },
+            "description": "Up to 20 of the busiest IPs in the cell."
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "city": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "precision": {
+            "enum": [
+              "city",
+              "region",
+              "country",
+              null
+            ]
+          }
+        }
+      }
+    },
+    "located": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unplaced": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Located IPs without coordinates."
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "pending": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

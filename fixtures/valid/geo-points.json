@@ -1,0 +1,24 @@
+{
+  "dots": [
+    {
+      "key": "101:17",
+      "latitude": 50.11,
+      "longitude": 8.68,
+      "count": 3,
+      "sessions": 40,
+      "ips": [
+        "203.0.113.9",
+        "203.0.113.10",
+        "203.0.113.11"
+      ],
+      "country": "Germany",
+      "region": "Hesse",
+      "city": "Frankfurt am Main",
+      "precision": "city"
+    }
+  ],
+  "located": 3,
+  "unplaced": 0,
+  "total": 5,
+  "pending": 2
+}

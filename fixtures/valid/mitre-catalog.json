@@ -1,0 +1,20 @@
+[
+  {
+    "id": "T1082",
+    "name": "System Information Discovery",
+    "tactics": [
+      "Discovery"
+    ],
+    "basis": "command",
+    "url": "https://attack.mitre.org/techniques/T1082/"
+  },
+  {
+    "id": "T1110.001",
+    "name": "Brute Force: Password Guessing",
+    "tactics": [
+      "Credential Access"
+    ],
+    "basis": "event",
+    "url": "https://attack.mitre.org/techniques/T1110/001/"
+  }
+]

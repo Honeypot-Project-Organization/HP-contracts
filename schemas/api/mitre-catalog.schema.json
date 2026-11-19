@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mitre-catalog.schema.json",
+  "title": "MitreCatalog",
+  "description": "GET /api/mitre/catalog: every technique the rule set can produce.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "name",
+      "tactics",
+      "basis",
+      "url"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+        "description": "ATT&CK technique id, e.g. T1082 or T1110.001. Heuristic tag, not a confirmed technique."
+      },
+      "name": {
+        "type": "string"
+      },
+      "tactics": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "basis": {
+        "enum": [
+          "event",
+          "command"
+        ]
+      },
+      "url": {
+        "type": "string",
+        "format": "uri"
+      }
+    }
+  }
+}

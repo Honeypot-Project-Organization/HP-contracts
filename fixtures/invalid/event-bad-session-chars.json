@@ -1,0 +1,4 @@
+{
+  "eventid": "cowrie.session.connect",
+  "session": "a b;$ne"
+}

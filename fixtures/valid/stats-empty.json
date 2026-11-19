@@ -1,0 +1,9 @@
+{
+  "total_sessions": 0,
+  "total_commands": 0,
+  "total_auth_attempts": 0,
+  "successful_logins": 0,
+  "success_rate_percent": 0.0,
+  "unique_ips": 0,
+  "last_event_received_at": null
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mitre-technique.schema.json",
+  "title": "MitreTechnique",
+  "description": "GET /api/mitre/{id}. `url` is informational; clients build the attack.mitre.org link themselves from the id (sub-technique T1110.001 -> /techniques/T1110/001/). `known` is false for ids stored in the database but absent from the catalog.",
+  "type": "object",
+  "required": [
+    "id",
+    "basis",
+    "occurrences",
+    "ips",
+    "rules"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+      "description": "ATT&CK technique id, e.g. T1082 or T1110.001. Heuristic tag, not a confirmed technique."
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tactics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "basis": {
+      "enum": [
+        "event",
+        "command"
+      ]
+    },
+    "occurrences": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "ips": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_seen": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp (UTC)."
+    },
+    "url": {
+      "type": "string"
+    },
+    "known": {
+      "type": "boolean"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "scope"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Regular expression (null for event-based rules). Show as text only."
+          },
+          "scope": {
+            "enum": [
+              "segment",
+              "full",
+              "event"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "sessions": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "commands": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "first_seen": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp (UTC)."
+    }
+  }
+}

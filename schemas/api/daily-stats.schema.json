@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "daily-stats.schema.json",
+  "title": "DailyStats",
+  "description": "GET /api/stats/daily?days=N (1-365). Sessions per UTC day for the most recent N days that have data, oldest first. Days with no sessions are absent; clients fill gaps. `attacks` is the number of sessions.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "date",
+      "attacks"
+    ],
+    "properties": {
+      "date": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "attacks": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  }
+}

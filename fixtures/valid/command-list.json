@@ -1,0 +1,13 @@
+[
+  {
+    "id": "665f1c2e9b1e8a0012345678",
+    "session_id": "abc123def456",
+    "src_ip": "203.0.113.9",
+    "timestamp": "2026-10-13T10:00:00Z",
+    "input": "uname -a",
+    "cmd_key": "3f1c2a9d7b0e44a8c5d61e02",
+    "techniques": [
+      "T1082"
+    ]
+  }
+]

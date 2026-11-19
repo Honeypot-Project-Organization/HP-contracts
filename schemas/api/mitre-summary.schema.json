@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mitre-summary.schema.json",
+  "title": "MitreSummary",
+  "description": "GET /api/mitre/summary. total_ids is the total number of occurrences (every tag on every command or event); unique_ids is the number of distinct techniques seen. Rows are ranked by occurrences, then IPs.",
+  "type": "object",
+  "required": [
+    "total_ids",
+    "unique_ids",
+    "top",
+    "top_event",
+    "top_command",
+    "techniques"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "total_ids": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "unique_ids": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "top": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/row"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "top_event": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/row"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "top_command": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/row"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "techniques": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/row"
+      }
+    }
+  },
+  "$defs": {
+    "row": {
+      "type": "object",
+      "required": [
+        "id",
+        "basis",
+        "occurrences",
+        "ips"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+          "description": "ATT&CK technique id, e.g. T1082 or T1110.001. Heuristic tag, not a confirmed technique."
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tactics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "basis": {
+          "enum": [
+            "event",
+            "command"
+          ]
+        },
+        "occurrences": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ips": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "last_seen": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "ISO 8601 timestamp (UTC)."
+        }
+      }
+    }
+  }
+}

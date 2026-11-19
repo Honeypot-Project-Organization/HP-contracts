@@ -1,0 +1,61 @@
+{
+  "total_ids": 130,
+  "unique_ids": 2,
+  "top": {
+    "id": "T1110.001",
+    "name": "Brute Force: Password Guessing",
+    "tactics": [
+      "Credential Access"
+    ],
+    "basis": "event",
+    "occurrences": 90,
+    "ips": 30,
+    "last_seen": "2026-10-13T11:00:00Z"
+  },
+  "top_event": {
+    "id": "T1110.001",
+    "name": "Brute Force: Password Guessing",
+    "tactics": [
+      "Credential Access"
+    ],
+    "basis": "event",
+    "occurrences": 90,
+    "ips": 30,
+    "last_seen": "2026-10-13T11:00:00Z"
+  },
+  "top_command": {
+    "id": "T1082",
+    "name": "System Information Discovery",
+    "tactics": [
+      "Discovery"
+    ],
+    "basis": "command",
+    "occurrences": 40,
+    "ips": 9,
+    "last_seen": "2026-10-13T10:00:05Z"
+  },
+  "techniques": [
+    {
+      "id": "T1110.001",
+      "name": "Brute Force: Password Guessing",
+      "tactics": [
+        "Credential Access"
+      ],
+      "basis": "event",
+      "occurrences": 90,
+      "ips": 30,
+      "last_seen": "2026-10-13T11:00:00Z"
+    },
+    {
+      "id": "T1082",
+      "name": "System Information Discovery",
+      "tactics": [
+        "Discovery"
+      ],
+      "basis": "command",
+      "occurrences": 40,
+      "ips": 9,
+      "last_seen": "2026-10-13T10:00:05Z"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "eventid": "cowrie.client.kex",
+  "session": "abc123def456",
+  "src_ip": "2001:db8::1",
+  "some_new_cowrie_field": {
+    "nested": true
+  }
+}

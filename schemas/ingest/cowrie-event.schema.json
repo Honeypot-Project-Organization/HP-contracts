@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cowrie-event.schema.json",
+  "title": "CowrieEvent",
+  "description": "One Cowrie JSON log line as accepted by POST /ingest and POST /ingest/batch. Only the fields the API uses are listed; unknown fields are allowed and kept in raw_events. The backend (app/routers/ingest.py, class CowrieEvent) is authoritative; this schema is a coarse screen. Free-text fields are attacker-controlled; the API truncates them to 4096 characters.",
+  "type": "object",
+  "required": [
+    "eventid"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "eventid": {
+      "type": "string",
+      "pattern": "^cowrie\\.[a-z0-9_.]{1,64}$",
+      "examples": [
+        "cowrie.session.connect"
+      ]
+    },
+    "session": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$",
+      "description": "Without a session id the event is stored in raw_events only."
+    },
+    "src_ip": {
+      "type": "string",
+      "pattern": "^[0-9A-Fa-f:.]{2,45}$",
+      "description": "IPv4 or IPv6. The API normalises it with Python's ipaddress and rejects anything else with 422."
+    },
+    "src_port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "dst_port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "protocol": {
+      "type": "string",
+      "description": "Stored as 'ssh' or 'telnet'; anything else becomes 'ssh'."
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "ISO 8601. Missing -> server receive time. No offset -> treated as UTC."
+    },
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "input": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "description": "cowrie.client.version"
+    },
+    "url": {
+      "type": "string"
+    },
+    "filename": {
+      "type": "string"
+    },
+    "outfile": {
+      "type": "string"
+    },
+    "shasum": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "size": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duration": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Seconds (older Cowrie)."
+    },
+    "duration_ms": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Milliseconds (newer Cowrie). The API stores duration_ms/1000 as duration_seconds."
+    }
+  }
+}

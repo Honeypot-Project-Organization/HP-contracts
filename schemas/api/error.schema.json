@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "error.schema.json",
+  "title": "Error",
+  "description": "Error bodies. FastAPI errors use `detail` (a string, or an array for request-validation 422s). Rate-limit 429s come from slowapi's default handler and use `error`; that shape comes from the library and was not checked against a running server.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "detail"
+      ],
+      "properties": {
+        "detail": {
+          "type": [
+            "string",
+            "array"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "error"
+      ],
+      "properties": {
+        "error": {
+          "type": "string"
+        }
+      }
+    }
+  ]
+}

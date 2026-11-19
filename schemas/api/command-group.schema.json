@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "command-group.schema.json",
+  "title": "CommandGroup",
+  "description": "GET /api/commands/groups/{key}: one distinct command with its totals over ALL commands.",
+  "type": "object",
+  "required": [
+    "key",
+    "text",
+    "count",
+    "ip_count",
+    "session_count"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{24}$",
+      "description": "sha256 of the trimmed command text, first 24 hex chars. Used in /api/commands/groups/{key}."
+    },
+    "text": {
+      "type": "string",
+      "description": "Attacker-typed text. Render as text only."
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "ip_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "session_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "first_ts": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp, UTC."
+    },
+    "last_ts": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 timestamp, UTC."
+    },
+    "techniques": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^T\\d{4}(?:\\.\\d{3})?$",
+        "description": "ATT&CK technique id, e.g. T1082 or T1110.001. Heuristic tag, not a confirmed technique."
+      },
+      "description": "MITRE ATT&CK technique ids matched by the rule set in app/mitre.py (heuristic). Absent on rows stored before the MITRE backfill ran."
+    }
+  }
+}

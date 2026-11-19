@@ -1,0 +1,18 @@
+[
+  {
+    "eventid": "cowrie.session.connect",
+    "session": "abc123def456",
+    "src_ip": "203.0.113.9",
+    "src_port": 51234,
+    "dst_port": 22,
+    "protocol": "ssh",
+    "timestamp": "2026-10-13T10:00:00Z"
+  },
+  {
+    "eventid": "cowrie.session.closed",
+    "session": "abc123def456",
+    "src_ip": "203.0.113.9",
+    "duration": 6.0,
+    "timestamp": "2026-10-13T10:00:00Z"
+  }
+]
